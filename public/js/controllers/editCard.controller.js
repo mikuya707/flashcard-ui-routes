@@ -7,3 +7,11 @@ app.controller('EditCardController', function ($scope, FlashCardsFactory) {
 		});
 	};
 });
+
+// app.config(function($stateProvider){
+//      $stateProvider.state(‘edit’, {
+//           url: '/edit', 
+//           template: '<p>Edit the page</p>'
+//           controller: 'EditCardController'
+//      });
+// });

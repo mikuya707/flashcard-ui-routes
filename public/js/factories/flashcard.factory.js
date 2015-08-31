@@ -1,4 +1,4 @@
-app.factory('FlashCardsFactory', function ($http, currentFlashCards) {
+app.factory('FlashCardsFactory', function ($http, $state, currentFlashCards) {
 
   var categories = [
     'MongoDB',
@@ -38,6 +38,7 @@ app.factory('FlashCardsFactory', function ($http, currentFlashCards) {
   function updateFlashCard (card) {
     return $http.put('/cards/' + card._id, card)
     .then(function (response) {
+      $state.go('all');
       return response.data;
     });
   }

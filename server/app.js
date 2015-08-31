@@ -12,6 +12,8 @@ var publicPath = path.join(__dirname, '../public');
 // The path of our index.html file. ([ROOT]/index.html)
 var indexHtmlPath = path.join(__dirname, '../index.html');
 
+var bowerPath = path.join(__dirname, '../bower_components');
+
 // http://nodejs.org/docs/latest/api/globals.html#globals_dirname
 // for more information about __dirname
 
@@ -22,6 +24,7 @@ var indexHtmlPath = path.join(__dirname, '../index.html');
 // something in our public folder, serve up that file
 // e.g. angular.js, style.css
 app.use(express.static(publicPath));
+app.use(express.static(bowerPath));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -49,6 +52,24 @@ app.get('/cards', function (req, res) {
             res.send(cards);
         }, 500 + Math.random() * 1000);
     });
+
+});
+
+app.get('/cards/:id', function (req, res) {
+
+    FlashCardModel.findOne({_id: req.params.id}, function (err, card) {
+            res.send(card);        
+    });
+
+});
+
+app.delete('/cards/:id', function (req, res) {
+
+    FlashCardModel.findOne({_id: req.params.id}).remove().exec().then(function(){
+        console.log("removed");
+        res.end();
+    });
+    
 
 });
 

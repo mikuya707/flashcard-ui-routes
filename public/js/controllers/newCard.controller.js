@@ -20,3 +20,11 @@ app.controller('NewCardController', function ($scope, FlashCardsFactory, $rootSc
 	};
 	resetCard();
 });
+
+// app.config(function($stateProvider){
+//      $stateProvider.state(‘newCard’, {
+//           url: '/newCard', 
+//           template: '<p>new card</p>'
+//           controller: 'NewCardController'
+//      });
+// });

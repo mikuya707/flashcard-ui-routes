@@ -24,3 +24,4 @@ app.controller('MainController', function ($scope, FlashCardsFactory, $log, Scor
 
   $scope.getCategoryCards();
 });
+
